@@ -31,7 +31,7 @@ This repository contains the code for a feedback form application built using Py
 
 1. Run the application:
     ```sh
-    python app.py
+    python manage.py runserver
     ```
 
 2. Open your web browser and go to `http://localhost:5000` to access the feedback form.
@@ -52,10 +52,6 @@ This repository contains the code for a feedback form application built using Py
     git push origin feature/your-feature-name
     ```
 5. Open a pull request
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Contact
 
