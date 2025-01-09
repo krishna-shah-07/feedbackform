@@ -34,7 +34,7 @@ This repository contains the code for a feedback form application built using Py
     python manage.py runserver
     ```
 
-2. Open your web browser and go to `http://localhost:5000` to access the feedback form.
+2. Open your web browser and go to `http://localhost:8000` to access the feedback form.
 
 ## Contributing
 
