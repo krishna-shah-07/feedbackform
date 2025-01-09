@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block start %}
+
+<div class="container" style="margin-top: 40px;">
+    <h3>Give your feedback</h3>
+    <div class="row">
+        {% for feedback in feedbacks %}
+        <div class="col s12 m6">
+            <div class="card transparent-card">
+                <div class="card-content white-text">
+                    <span class="card-title">Feedback - {{forloop.counter}}</span>
+                </div>
+                <div class="card-action">
+                    <a href="/feedback/{{forloop.counter}}">Start feedback</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

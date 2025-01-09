@@ -17,7 +17,11 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
+from home.views import *
 
 urlpatterns = [
+    path("", index, name="index"),
+    path("feedback/<feedback_id>/", customerfeedback, name="feedback"),
+    path("thankyou/", thankyou, name="thankyou"),
     path("admin/", admin.site.urls),
 ]

@@ -13,22 +13,19 @@ class Question(models.Model):
 class Option(models.Model):
     #related name is used for reverse relation lookup -- here for options of a question we can use question.options
     question = models.ForeignKey(Question, on_delete=models.CASCADE, related_name='options')
-    option_name = models.CharField(max_length=200)
+    optionname = models.CharField(max_length=200)
     
     def __str__(self):
-        return f"{self.question.question} - {self.option}"
+        return f"{self.question.question} - {self.optionname}"
     
 class CustomerFeedback(models.Model):
     question = models.ManyToManyField(Question)
     
     def __str__(self):
-        return f"{self.question.question} - {self.answer}"
+        return f"{self.question.all()}"
     
 class CustomerResponse(models.Model):
     customer = models.ForeignKey(CustomerFeedback, on_delete=models.CASCADE)
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     response = models.TextField(null=True, blank=True)
     selected_option = models.ManyToManyField(Option, blank=True)
-    
-    def __str__(self):
-        return f"{self.customer.name} - {self.feedback}"

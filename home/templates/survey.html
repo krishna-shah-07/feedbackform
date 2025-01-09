@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block start %}
+
+<div class="container">
+    <form method="post" class="survey-form">
+        {% csrf_token %}
+        {% for question in questions %}
+        <div class="card transparent-card">
+            <div class="card-content">
+                <span class="card-title">{{question.question}}</span>
+                <div class="input-field">
+                    {% if question.question_type == "text" %}
+                    <input type="text" name="response-{{question.id}}" class="validate" placeholder="Your answer" required />
+                    {% elif question.question_type == "bigtext" %}
+                    <textarea class="materialize-textarea" name="response-{{question.id}}" placeholder="Your answer" required></textarea>
+                    {% elif question.question_type == "radio" %}
+                        {% for option in question.options.all %}
+                        <p>
+                            <label>
+                                <input type="radio" name="options-{{question.id}}" value="{{option.id}}" />
+                                <span>{{option.optionname}}</span>
+                            </label>
+                        </p>
+                        {% endfor %}
+                    {% elif question.question_type == "checkbox" %}
+                        {% for option in question.options.all %}
+                        <p>
+                            <label>
+                                <input type="checkbox" name="options-{{question.id}}" value="{{option.id}}" />
+                                <span>{{option.optionname}}</span>
+                            </label>
+                        </p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        <div class="center-align">
+            <button type="submit" class="btn waves-effect waves-light">Submit survey</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
